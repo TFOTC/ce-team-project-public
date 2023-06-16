@@ -21,51 +21,49 @@ resource "aws_s3_bucket_versioning" "ce-tfotc-remote-store" {
 resource "aws_s3_bucket_public_access_block" "ce-tfotc-remote-store" {
   bucket = aws_s3_bucket.ce-tfotc-remote-store.id
 
-  block_public_policy     = false
-  restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_policy" "ce-tfotc-remote-store" {
-  bucket = aws_s3_bucket.ce-tfotc-remote-store.id
+# resource "aws_s3_bucket_policy" "ce-tfotc-remote-store" {
+#   bucket = aws_s3_bucket.ce-tfotc-remote-store.id
 
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "ce-tfotc-remote-store-permissions-1",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::133711366931:root"        
-      },
-      "Action": [
-        "s3:ListBucket",
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::ce-tfotc-remote-store/*"
-      ]  
-    },
-    {
-      "Sid": "ce-tfotc-remote-store-permissions-2",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::053636544826:root"        
-      },
-      "Action": [
-        "s3:ListBucket",
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::ce-tfotc-remote-store/*"
-      ]  
-    }
-  ]
-}
-POLICY
-}
+#   policy = <<POLICY
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Sid": "ce-tfotc-remote-store-permissions-1",
+#       "Effect": "Allow",
+#       "Principal": {
+#         "AWS": "arn:aws:iam::133711366931:root"        
+#       },
+#       "Action": [
+#         "s3:ListBucket",
+#         "s3:GetObject",
+#         "s3:PutObject"
+#       ],
+#       "Resource": [
+#         "arn:aws:s3:::ce-tfotc-remote-store/*"
+#       ]  
+#     },
+#     {
+#       "Sid": "ce-tfotc-remote-store-permissions-2",
+#       "Effect": "Allow",
+#       "Principal": {
+#         "AWS": "arn:aws:iam::053636544826:root"        
+#       },
+#       "Action": [
+#         "s3:ListBucket",
+#         "s3:GetObject",
+#         "s3:PutObject"
+#       ],
+#       "Resource": [
+#         "arn:aws:s3:::ce-tfotc-remote-store/*"
+#       ]  
+#     }
+#   ]
+# }
+# POLICY
+# }
 
 resource "aws_dynamodb_table" "ce-tfotc-remote-store" {
 
