@@ -10,3 +10,9 @@ module "frontend-s3" {
   bucket_name = "ce-tfotc-frontend-host"
   origin_id   = "ce-tfotc-frontend-host"
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+
+  ecr_backend_name = "ce-tfotc-ecr-backend"
+}
