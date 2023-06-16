@@ -1,7 +1,7 @@
 resource "aws_security_group" "terraform_security_group" {
   name        = "terraform-security-group"
   description = "Terraform security group"
-  vpc_id = "VPC ID"
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     from_port   = 3000
