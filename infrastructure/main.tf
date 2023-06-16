@@ -10,3 +10,9 @@ module "frontend-s3" {
   bucket_name = "ce-tfotc-frontend-host"
   origin_id   = "ce-tfotc-frontend-host"
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+  
+  private_subnet = module.network.private_subnets[0]
+  }
