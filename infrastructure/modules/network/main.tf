@@ -18,5 +18,4 @@ module "vpc" {
     OwnedBy   = "The Fellowship of the Cloud"
     Project   = "CE-TEAM-PROJECT"
   }
-
 }
