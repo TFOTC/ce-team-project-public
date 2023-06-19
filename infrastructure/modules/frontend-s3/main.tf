@@ -58,24 +58,49 @@ resource "aws_s3_bucket_policy" "ce-tfotc-frontend-host" {
   POLICY
 }
 
-module "template_files" {
-  source = "hashicorp/dir/template"
+resource "aws_iam_policy" "github-pipeline" {
+  name = "github-pipeline"
 
-  base_dir = "${path.module}/media/dist"
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+			"Sid": "AccessToGetBucketLocation",
+			"Effect": "Allow",
+			"Action": [
+			    "s3:GetBucketLocation"
+			    ],
+			"Resource": [
+			    "arn:aws:s3:::*"
+			    ]
+		},
+		{
+			"Sid": "AccessToWebsiteBuckets",
+			"Effect": "Allow",
+			"Action": [
+			    "s3:PutBucketWebsite",
+			    "s3:PutObject",
+			    "s3:PutObjectAcl",
+			    "s3:GetObject",
+			    "s3:ListBucket",
+			    "s3:DeleteObject"
+			    ],
+			"Resource": [
+			    "arn:aws:s3:::ce-tfotc-frontend-host",
+			    "arn:aws:s3:::ce-tfotc-frontend-host/*"
+			    ]
+		},
+    {
+      "Sid": "AssumeIAMRole",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::529351201608:role/AWSReservedSSO_AWSAdministratorAccess_08deacc2663a7d72"
+    }
 
+  ]
 }
-
-resource "aws_s3_object" "ce-tfotc-frontend-host" {
-  depends_on = [aws_s3_bucket_acl.ce-tfotc-frontend-host]
-
-  for_each     = module.template_files.files
-  bucket       = aws_s3_bucket.ce-tfotc-frontend-host.id
-  key          = each.key
-  source       = each.value.source_path
-  etag         = each.value.digests.md5
-  acl          = "public-read"
-  content_type = each.value.content_type
-  content      = each.value.content
+  POLICY
 }
 
 resource "aws_s3_bucket_website_configuration" "ce-tfotc-frontend-host" {
