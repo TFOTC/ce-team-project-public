@@ -12,7 +12,7 @@ module "frontend-s3" {
 }
 
 module "ec2" {
-  source = "./modules/ec2"
-  
+  source         = "./modules/ec2"
   private_subnet = module.network.private_subnets[0]
-  }
+  vpc_id         = module.network.vpc_id
+}
