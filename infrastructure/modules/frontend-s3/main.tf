@@ -47,7 +47,8 @@ resource "aws_s3_bucket_policy" "ce-tfotc-frontend-host" {
     {
       "Sid": "ce-tfotc-frontend-host",
       "Action": [
-        "s3:GetObject"
+        "s3:GetObject",
+        "s3:GetObjectVersion"
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:s3:::ce-tfotc-frontend-host/*",
@@ -197,12 +198,18 @@ resource "aws_cloudfront_distribution" "ce-tfotc-frontend-host" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
+  custom_error_response {
+    error_code         = 404
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
   price_class = "PriceClass_200"
 
   restrictions {
     geo_restriction {
       restriction_type = "whitelist"
-      locations        = ["GB", "RO"]
+      locations        = ["GB"]
     }
   }
 
@@ -216,5 +223,4 @@ resource "aws_cloudfront_distribution" "ce-tfotc-frontend-host" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
-
 }
