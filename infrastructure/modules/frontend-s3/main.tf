@@ -156,8 +156,8 @@ resource "aws_cloudfront_distribution" "ce-tfotc-frontend-host" {
 
   ordered_cache_behavior {
     path_pattern     = "/content/immutable/*"
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["HEAD", "GET", "OPTIONS"]
     target_origin_id = var.origin_id
 
     forwarded_values {
@@ -179,8 +179,8 @@ resource "aws_cloudfront_distribution" "ce-tfotc-frontend-host" {
   # Cache behavior with precedence 1
   ordered_cache_behavior {
     path_pattern     = "/content/*"
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = var.origin_id
 
     forwarded_values {

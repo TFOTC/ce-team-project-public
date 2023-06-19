@@ -1,5 +1,5 @@
-variable "private_subnet" {
-  description = "Private Subnet"
+variable "public_subnet" {
+  description = "Public Subnet"
   type        = string
 }
 
