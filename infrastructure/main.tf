@@ -16,3 +16,9 @@ module "ecr" {
 
   ecr_backend_name = "ce-tfotc-ecr-backend"
 }
+
+module "ec2" {
+  source         = "./modules/ec2"
+  private_subnet = module.network.private_subnets[0]
+  vpc_id         = module.network.vpc_id
+}
