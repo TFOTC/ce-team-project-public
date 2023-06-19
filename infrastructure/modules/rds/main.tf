@@ -57,4 +57,10 @@ resource "aws_db_instance" "project_db" {
   provisioner "local-exec" {
     command = "PGPASSWORD=${var.db_password} psql --host=${aws_db_instance.project_db.address} --port=5432 --username=postgres -c 'CREATE DATABASE my_test_db'"
   }
+
+  tags = {
+    ManagedBy = "Terraform"
+    OwnedBy   = "The Fellowship of the Cloud"
+    Project   = "CE-TEAM-PROJECT"
+  }
 }
