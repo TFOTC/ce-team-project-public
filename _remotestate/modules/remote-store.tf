@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "ce-tfotc-remote-store" {
+resource "aws_s3_bucket" "ce-tfotc-remote-store-fm" {
 
   bucket        = var.remote_name
   force_destroy = true
@@ -10,16 +10,16 @@ resource "aws_s3_bucket" "ce-tfotc-remote-store" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "ce-tfotc-remote-store" {
+resource "aws_s3_bucket_versioning" "ce-tfotc-remote-store-fm" {
 
-  bucket = aws_s3_bucket.ce-tfotc-remote-store.id
+  bucket = aws_s3_bucket.ce-tfotc-remote-store-fm.id
   versioning_configuration {
     status = "Enabled"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "ce-tfotc-remote-store" {
-  bucket = aws_s3_bucket.ce-tfotc-remote-store.id
+resource "aws_s3_bucket_public_access_block" "ce-tfotc-remote-store-fm" {
+  bucket = aws_s3_bucket.ce-tfotc-remote-store-fm.id
 
 }
 
@@ -65,7 +65,7 @@ resource "aws_s3_bucket_public_access_block" "ce-tfotc-remote-store" {
 # POLICY
 # }
 
-resource "aws_dynamodb_table" "ce-tfotc-remote-store" {
+resource "aws_dynamodb_table" "ce-tfotc-remote-store-fm" {
 
   name           = var.remote_name
   read_capacity  = 5

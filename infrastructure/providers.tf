@@ -9,9 +9,9 @@ terraform {
   required_version = ">= 1.2.0"
 
   backend "s3" {
-    bucket         = "ce-tfotc-remote-store"
+    bucket         = "ce-tfotc-remote-store-fm"
     key            = "terraform.tfstate"
-    dynamodb_table = "ce-tfotc-remote-store"
+    dynamodb_table = "ce-tfotc-remote-store-fm"
     region         = "eu-west-2"
   }
 

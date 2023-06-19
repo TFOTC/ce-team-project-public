@@ -4,7 +4,8 @@ resource "aws_s3_bucket" "ce-tfotc-frontend-host" {
   force_destroy = true
 
   tags = {
-    Name      = "ce-tfotc-frontend-host"
+    #Name      = "ce-tfotc-frontend-host"
+    Name      = "ce-tfotc-frontend-host-fm"
     ManagedBy = "Terraform"
     OwnedBy   = "The Fellowship of the Cloud"
     Project   = "CE-TEAM-PROJECT"
@@ -45,12 +46,12 @@ resource "aws_s3_bucket_policy" "ce-tfotc-frontend-host" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "ce-tfotc-frontend-host",
+      "Sid": "ce-tfotc-frontend-host-fm",
       "Action": [
         "s3:GetObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::ce-tfotc-frontend-host/*",
+      "Resource": "arn:aws:s3:::ce-tfotc-frontend-host-fm/*",
       "Principal": "*"
     }
   ]
@@ -182,7 +183,8 @@ resource "aws_cloudfront_distribution" "ce-tfotc-frontend-host" {
   }
 
   tags = {
-    Name      = "ce-tfotc-frontend-host"
+    #Name      = "ce-tfotc-frontend-host"
+    Name      = "ce-tfotc-frontend-host-fm"
     ManagedBy = "Terraform"
     OwnedBy   = "The Fellowship of the Cloud"
     Project   = "CE-TEAM-PROJECT"
