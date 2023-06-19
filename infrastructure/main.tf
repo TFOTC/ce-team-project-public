@@ -10,3 +10,20 @@ module "frontend-s3" {
   bucket_name = "ce-tfotc-frontend-host"
   origin_id   = "ce-tfotc-frontend-host"
 }
+
+module "database" {
+  source = "./modules/rds"
+
+  vpc_id         = module.network.vpc_id
+  public_subnets = module.network.public_subnets
+}
+
+
+resource "null_resource" "save_database_endpoint" {
+  provisioner "local-exec" {
+    command = "echo ${module.database.aws_db_instance.project_db.address} > database_endpoint.txt"
+  }
+
+  # This dependency ensures that the provisioner runs after the database module has been created
+  depends_on = [module.database]
+}
