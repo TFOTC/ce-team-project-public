@@ -35,7 +35,21 @@ module "ecr" {
 }
 
 module "ec2" {
-  source         = "./modules/ec2"
-  private_subnet = module.network.private_subnets[0]
-  vpc_id         = module.network.vpc_id
+  source            = "./modules/ec2"
+  public_subnet_one = module.network.public_subnets[0]
+  public_subnet_two = module.network.public_subnets[1]
+  vpc_id            = module.network.vpc_id
+}
+
+module "eks" {
+  source             = "./modules/eks"
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnets
+  cluster_name       = "tfotc-eks-cluster"
+}
+
+module "backend-cf" {
+  source = "./modules/backend-cf"
+
+  origin_id = "ce-tfotc-backend-host"
 }

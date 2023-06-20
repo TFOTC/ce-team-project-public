@@ -3,7 +3,10 @@ resource "aws_db_subnet_group" "project_db" {
   subnet_ids = var.public_subnets
 
   tags = {
-    Name = "project_db"
+    Name      = "project_db"
+    ManagedBy = "Terraform"
+    OwnedBy   = "The Fellowship of the Cloud"
+    Project   = "CE-TEAM-PROJECT"
   }
 }
 
@@ -26,7 +29,10 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    Name = "project_db_rds"
+    Name      = "project_db_rds"
+    ManagedBy = "Terraform"
+    OwnedBy   = "The Fellowship of the Cloud"
+    Project   = "CE-TEAM-PROJECT"
   }
 }
 
@@ -55,7 +61,7 @@ resource "aws_db_instance" "project_db" {
   skip_final_snapshot    = true
 
   provisioner "local-exec" {
-    command = "PGPASSWORD=${var.db_password} psql --host=${aws_db_instance.project_db.address} --port=5432 --username=postgres -c 'CREATE DATABASE project-db'"
+    command = "PGPASSWORD=${var.db_password} psql --host=${aws_db_instance.project_db.address} --port=5432 --username=postgres -c 'CREATE DATABASE project_db'"
   }
 
   tags = {
