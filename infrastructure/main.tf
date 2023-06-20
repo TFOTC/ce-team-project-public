@@ -47,3 +47,9 @@ module "eks" {
   private_subnet_ids = module.network.private_subnets
   cluster_name       = "tfotc-eks-cluster"
 }
+
+module "backend-cf" {
+  source = "./modules/backend-cf"
+
+  origin_id = "ce-tfotc-backend-host"
+}
