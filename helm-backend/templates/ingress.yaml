@@ -3,11 +3,8 @@ kind: Ingress
 metadata:
   name: backend-ingress
   annotations:
-    alb.ingress.kubernetes.io/load-balancer-name: ac3e657f6f762423f821a780a7f23b16
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/scheme: internet-facing
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: alb
   rules:
     - http:
         paths:
