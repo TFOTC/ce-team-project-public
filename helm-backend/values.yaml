@@ -14,7 +14,7 @@ repoImgVersion: :latest
 
 # Service
 
-serviceType: NodePort
+serviceType: LoadBalancer
 
 # Cloudfront
 

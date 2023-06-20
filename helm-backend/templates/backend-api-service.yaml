@@ -11,4 +11,5 @@ spec:
     - protocol: TCP
       port: {{.Values.fwdPort}}
       targetPort: {{.Values.appPort}}
+      name: {{.Values.appName}}
   type: {{.Values.serviceType}}
