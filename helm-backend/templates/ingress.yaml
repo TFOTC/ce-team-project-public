@@ -3,11 +3,8 @@ kind: Ingress
 metadata:
   name: backend-ingress
   annotations:
-    alb.ingress.kubernetes.io/load-balancer-name: ingress
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/scheme: internet-facing
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: alb
   rules:
     - http:
         paths:
@@ -15,6 +12,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: backend-service
+                name: {{.Values.appName}}
                 port:
                   number: {{.Values.fwdPort}}
