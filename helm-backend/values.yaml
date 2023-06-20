@@ -1,0 +1,21 @@
+# Backend-API
+
+appName: project-be-k8s
+appPort: 8080
+fwdPort: 8080
+
+# Deployment
+
+replicas: 1
+
+repoUser: kevenmc/
+repoImage: project-be
+repoImgVersion: :latest
+
+# Service
+
+serviceType: NodePort
+
+# Cloudfront
+
+cloudfrontDNS: d1gs7x7eyzx088.cloudfront.net
