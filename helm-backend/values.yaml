@@ -18,4 +18,4 @@ serviceType: LoadBalancer
 
 # Cloudfront
 
-cloudfrontDNS: d1gs7x7eyzx088.cloudfront.net
+cloudfrontDNS: d1ejl1utkpfkif.cloudfront.net
