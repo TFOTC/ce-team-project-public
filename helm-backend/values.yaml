@@ -5,7 +5,6 @@ appPort: 8080
 fwdPort: 8080
 portName: main
 metricsPort: metrics
-path: /project-be-k8s/actuator/prometheus
 
 # Deployment
 

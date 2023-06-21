@@ -7,7 +7,6 @@ spec:
   endpoints:
     - interval: 15s
       port: {{.Values.metricsPort}}
-      path: {{.Values.path}}
       scrapeTimeout: 14s
   namespaceSelector:
     matchNames:
