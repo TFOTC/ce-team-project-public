@@ -6,7 +6,7 @@ metadata:
   name: {{.Values.appName}}
   namespace: default
   annotations:
-    prometheus.io/port: {{.Values.portName}}
+    prometheus.io/port: 9000
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
   labels:
@@ -16,8 +16,11 @@ spec:
   selector:
     app: {{.Values.appName}}
   ports:
-    - protocol: TCP
+    - name: {{.Values.portName}}
+      protocol: TCP
       port: {{.Values.fwdPort}}
       targetPort: {{.Values.appPort}}
-      name: {{.Values.portName}}
+    - name: {{.Values.metricsPort}}
+      protocol: TCP
+      port: 9000
   type: {{.Values.serviceType}}
