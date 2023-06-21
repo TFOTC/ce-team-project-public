@@ -1,8 +1,8 @@
 # Backend-API
 
 appName: project-be-k8s
-appPort: 80
-fwdPort: 80
+appPort: 8080
+fwdPort: 8080
 
 # Deployment
 
