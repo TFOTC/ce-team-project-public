@@ -15,7 +15,7 @@ repoImgVersion: :14
 
 # Service
 
-serviceType: LoadBalancer
+serviceType: ClusterIp
 
 # Cloudfront
 
