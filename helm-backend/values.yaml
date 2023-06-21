@@ -8,10 +8,10 @@ metricsPort: metrics
 
 # Deployment
 
-replicas: 2
+replicas: 1
 
 repoImage: 529351201608.dkr.ecr.eu-west-2.amazonaws.com/ce-tfotc-ecr-backend
-repoImgVersion: :12
+repoImgVersion: :14
 
 # Service
 
