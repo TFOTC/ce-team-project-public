@@ -21,7 +21,7 @@ spec:
       protocol: TCP
       targetPort: {{.Values.appPort}}
     - port: 9000
-      targetPort: 9000
+      targetPort: {{.Values.appPort}}
       name: {{.Values.metricsPort}}
       protocol: TCP
   type: {{.Values.serviceType}}
