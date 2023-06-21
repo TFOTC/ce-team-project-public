@@ -6,7 +6,7 @@ metadata:
 spec:
   endpoints:
     - interval: 15s
-      port: {{.Values.metricsPort}}
+      port: {{.Values.portName}}
       scrapeTimeout: 14s
   namespaceSelector:
     matchNames:
