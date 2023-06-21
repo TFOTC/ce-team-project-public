@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "ce-tfotc-backend-host" {
   origin {
-    domain_name = "ac3e657f6f762423f821a780a7f23b16-1665436388.eu-west-2.elb.amazonaws.com"
+    domain_name = "ac3e657f6f762423f821a780a7f23b16-1964694743.eu-west-2.elb.amazonaws.com"
     custom_origin_config {
       http_port              = 8080
       origin_protocol_policy = "http-only"
