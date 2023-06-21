@@ -4,6 +4,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{.Values.appName}}
+  namespace: default
+  annotations:
+    prometheus.io/port: {{.Values.portName}}
+    prometheus.io/scrape: "true"
+  labels:
+    app.kubernetes.io/part-of: {{.Values.appName}}
+
 spec:
   selector:
     app: {{.Values.appName}}
@@ -11,5 +18,5 @@ spec:
     - protocol: TCP
       port: {{.Values.fwdPort}}
       targetPort: {{.Values.appPort}}
-      name: {{.Values.appName}}
+      name: {{.Values.portName}}
   type: {{.Values.serviceType}}
