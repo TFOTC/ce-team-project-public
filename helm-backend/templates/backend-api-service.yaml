@@ -8,7 +8,7 @@ metadata:
   annotations:
     prometheus.io/port: {{.Values.portName}}
     prometheus.io/scrape: "true"
-    prometheus.io/path: /actuator/prometheus
+    prometheus.io/path: "/actuator/prometheus"
   labels:
     app.kubernetes.io/part-of: {{.Values.appName}}
 
