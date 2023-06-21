@@ -6,7 +6,7 @@ metadata:
   name: {{.Values.appName}}
   namespace: default
   annotations:
-    prometheus.io/port: {{.Values.appPort}}
+    prometheus.io/port: {{.Values.metricsPort}}
     prometheus.io/scrape: "true"
     prometheus.io/path: /actuator/prometheus
   labels:
@@ -16,8 +16,11 @@ spec:
   selector:
     app: {{.Values.appName}}
   ports:
-    - name: {{.Values.portName}}
+    - port: {{.Values.fwdPort}}
+      name: {{.Values.portName}}
       protocol: TCP
-      port: {{.Values.fwdPort}}
       targetPort: {{.Values.appPort}}
+    - port: {{.Values.metricsPort}}
+      name: {{.Values.metricsPort}}
+      protocol: TCP
   type: {{.Values.serviceType}}

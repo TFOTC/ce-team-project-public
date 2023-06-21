@@ -4,6 +4,7 @@ appName: project-be-k8s
 appPort: 8080
 fwdPort: 8080
 portName: main
+metricsPort: metrics
 
 # Deployment
 
