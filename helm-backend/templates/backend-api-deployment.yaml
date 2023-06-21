@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: {{.Values.appName}}
-        image: {{.Values.repoUser}}{{.Values.repoImage}}{{.Values.repoImgVersion}}
+        image: {{.Values.repoImage}}{{.Values.repoImgVersion}}
         ports:
         - containerPort: {{.Values.appPort}}

@@ -2,14 +2,13 @@
 
 appName: project-be-k8s
 appPort: 8080
-fwdPort: 8080
+fwdPort: 80
 
 # Deployment
 
 replicas: 1
 
-repoUser: kevenmc/
-repoImage: project-be
+repoImage: 529351201608.dkr.ecr.eu-west-2.amazonaws.com/ce-tfotc-ecr-backend
 repoImgVersion: :latest
 
 # Service

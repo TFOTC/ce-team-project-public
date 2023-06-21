@@ -34,12 +34,12 @@ module "ecr" {
   ecr_backend_name = "ce-tfotc-ecr-backend"
 }
 
-module "ec2" {
-  source            = "./modules/ec2"
-  public_subnet_one = module.network.public_subnets[0]
-  public_subnet_two = module.network.public_subnets[1]
-  vpc_id            = module.network.vpc_id
-}
+# module "ec2" {
+#   source            = "./modules/ec2"
+#   public_subnet_one = module.network.public_subnets[0]
+#   public_subnet_two = module.network.public_subnets[1]
+#   vpc_id            = module.network.vpc_id
+# }
 
 module "eks" {
   source             = "./modules/eks"
